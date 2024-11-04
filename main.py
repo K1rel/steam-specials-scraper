@@ -48,10 +48,13 @@ if __name__ == "__main__":
 
         for div in divs:
           
-
+        
+        
+                
             attrs = {
                 "title" : div.css_first("div[class*='StoreSaleWidgetTitle']").text(),
-                "img_url": div.css_first("div[class*=CapsuleImageCtn] img").attributes.get("src")
+                "img_url": div.css_first("div[class*=CapsuleImageCtn] img").attributes.get("src"),
+                "tags" : [i.text() for i in div.css("a[class*='WidgetTag']")[:5]]
             }
             print(attrs)
 

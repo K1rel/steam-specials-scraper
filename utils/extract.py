@@ -9,10 +9,7 @@ def extract_html(URL):
             page = browser.new_page()
             page.goto(URL)
 
-        
             page.wait_for_load_state("load")
-
-
             
             last_position = 0
             reached_end = False

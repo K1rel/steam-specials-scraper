@@ -19,8 +19,9 @@ if __name__ == "__main__":
             "release_date": extract_release_date(div, SELECTORS["release_date"]),
             "review_score": extract_attribute(div, SELECTORS["review_score"]),
             "reviews_count": extract_attribute(div, SELECTORS["reviews_count"]),
-            "original_price": extract_attribute(div, SELECTORS["original_price"]),
-            "discount_price": extract_attribute(div, SELECTORS["discount_price"]),
+            "original_price": extract_attribute(div, SELECTORS["original_price"]).get("amount"),
+            "discount_price": extract_attribute(div, SELECTORS["discount_price"]).get("amount"),
+            "currency": extract_attribute(div, SELECTORS["original_price"]).get("currency") 
         }
         print(attrs)
       

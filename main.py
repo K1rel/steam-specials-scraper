@@ -1,5 +1,6 @@
 from config.config import SELECTORS
 from config.tools import extract_attribute, extract_release_date, extract_tags
+from utils.process import save_to_file
 from utils.extract import extract_html
 from selectolax.parser import HTMLParser
 
@@ -11,6 +12,7 @@ if __name__ == "__main__":
 
     divs = tree.css('div[class*="gASJ2lL_xmVNuZkWGvrWg"]')
 
+    data = []
     for div in divs:
         attrs = {
             "title": extract_attribute(div, SELECTORS["title"]),
@@ -23,7 +25,10 @@ if __name__ == "__main__":
             "discount_price": extract_attribute(div, SELECTORS["discount_price"]).get("amount"),
             "currency": extract_attribute(div, SELECTORS["original_price"]).get("currency") 
         }
-        print(attrs)
+        data.append(attrs)
+    save_to_file("extract", data)    
+
+    
       
 
 

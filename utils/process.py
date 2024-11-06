@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import pandas as pd
 import re
 
 def split_price(price_str):
@@ -34,3 +34,12 @@ def apply_transformation(value, transformation, *args):
             return transformations[transformation](value, args[0]) 
         return transformations[transformation](value, *args)  
     return value
+
+
+
+def save_to_file(filename="extract.csv",data: list[dict] = None):
+    if data is None:
+        raise ValueError("The function expects data to be provided as a list of dict.")
+    df = pd.DataFrame(data)
+    filename = f"{datetime.now().strftime('%Y_%m_%d')}_{filename}.csv"
+    df.to_csv(filename, index=False)

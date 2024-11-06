@@ -47,3 +47,4 @@ def extract_release_date(div, config):
         return raw_date
     
     return None
+

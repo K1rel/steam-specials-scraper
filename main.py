@@ -25,6 +25,7 @@ if __name__ == "__main__":
             "discount_price": extract_attribute(div, SELECTORS["discount_price"]).get("amount"),
             "currency": extract_attribute(div, SELECTORS["original_price"]).get("currency") 
         }
+        attrs["discount_perc"] = ((attrs["original_price"] - attrs["discount_price"]) / attrs["original_price"] * 100)
         data.append(attrs)
     save_to_file("extract", data)    
 
